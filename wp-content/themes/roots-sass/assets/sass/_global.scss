@@ -1,0 +1,17 @@
+*{
+	-webkit-font-smoothing: antialiased;
+}
+
+body{
+	background: #000 url('../img/binding_dark.png');
+}
+
+div.container{
+	width: 100%;
+	overflow: hidden;
+}
+
+p{
+	@extend %lato_normal;
+	display: table;
+}
