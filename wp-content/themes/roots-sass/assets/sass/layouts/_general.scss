@@ -1,8 +1,0 @@
-// Content wrapper
-.wrap { }
-
-// Main content area
-.main {
-  @include make-sm-column($main-sm-columns);
-  padding: 0;
-}
