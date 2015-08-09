@@ -23,7 +23,8 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        console.log('tits');
+        console.log('hello');
+        
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
