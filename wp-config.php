@@ -18,6 +18,13 @@
  * @package WordPress
  */
 
+define('WP_MEMORY_LIMIT', '128M' );
+define('WP_MAX_MEMORY_LIMIT', '256M' );
+define('WP_CONTENT_FOLDERNAME', 'app');
+define('WP_CONTENT_DIR', ABSPATH . WP_CONTENT_FOLDERNAME);
+define('WP_CONTENT_URL', WP_SITEURL . WP_CONTENT_FOLDERNAME);
+// define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'portfolio');
