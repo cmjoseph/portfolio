@@ -64,7 +64,8 @@
 	MENUS
 */
 
-	// register_nav_menu( 'Menu_name',"Menu Location" );    
+	register_nav_menu( 'menu-header',"Header Menu" );
+	register_nav_menu( 'menu-footer',"Footer Menu" ); 
 
     /**
 	STYLES
@@ -99,18 +100,34 @@
 	add_action('wp_enqueue_scripts', 'load_site_scripts');
 
 
-add_filter('pre_get_posts', 'query_post_type');
-function query_post_type($query) {
-  if(is_category() || is_tag()) {
-    $post_type = get_query_var('post_type');
-	if($post_type)
-	    $post_type = $post_type;
-	else
-	    $post_type = array('nav_menu_item', 'post','news', 'team', 'eckotv'); // replace cpt to your custom post type
-    $query->set('post_type',$post_type);
-	return $query;
-    }
-}
+	function optimize_jquery() {
+		if (!is_admin()) {
+			wp_deregister_script('jquery');
+			wp_deregister_script('jquery-migrate.min');
+			wp_deregister_script('comment-reply.min');
+			$protocol='http:';
+			if($_SERVER['HTTPS']=='on') {
+				$protocol='https:';
+			}
+			wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, '3.6', true);
+			wp_enqueue_script('jquery');
+		}
+	}	
+	add_action('template_redirect', 'optimize_jquery');
+
+
+	add_filter('pre_get_posts', 'query_post_type');
+	function query_post_type($query) {
+	  if(is_category() || is_tag()) {
+	    $post_type = get_query_var('post_type');
+		if($post_type)
+		    $post_type = $post_type;
+		else
+		    $post_type = array('nav_menu_item', 'post','news', 'team', 'eckotv'); // replace cpt to your custom post type
+	    $query->set('post_type',$post_type);
+		return $query;
+	    }
+	}
 
 function twentythirteen_setup() {
 	/*

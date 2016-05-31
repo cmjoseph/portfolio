@@ -4,6 +4,55 @@
  * Custom made functions that are used in almost every projects
  */
 
+/* Disable Heartbeat */
+function stop_heartbeat(){
+   wp_deregister_script('heartbeat');
+}
+
+add_action('init', 'stop_heartbeat', 1);
+
+$parentSlug = "options";
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title'    => 'Options',
+        'menu_slug'     => $parentSlug,
+        'capability'	=> 'edit_posts',
+        'redirect'		=> true
+    ));
+}
+
+
+function get_video_infos($url)
+{
+    if (preg_match('/youtube\.com\/watch\?v=([^\&\?\/]+)/', $url, $id)) {
+        $infos = array('id' => $id[1], 'type' => 'youtube');
+    } else if (preg_match('/youtube\.com\/embed\/([^\&\?\/]+)/', $url, $id)) {
+        $infos = array('id' => $id[1], 'type' => 'youtube');
+    } else if (preg_match('/youtube\.com\/v\/([^\&\?\/]+)/', $url, $id)) {
+        $infos = array('id' => $id[1], 'type' => 'youtube');
+    } else if (preg_match('/youtu\.be\/([^\&\?\/]+)/', $url, $id)) {
+        $infos = array('id' => $id[1], 'type' => 'youtube');
+    } else if(preg_match('/player\.vimeo\.com\/video\/([^\&\?\/]+)/', $url, $id)) {
+        $infos = array('id' => $id[1], 'type' => 'vimeo');
+    } else if(preg_match('/vimeo\.com\/([^\&\?\/]+)/', $url, $id)) {
+        $infos = array('id' => $id[1], 'type' => 'vimeo');
+    } else {
+        $infos = array();
+    }
+
+    return $infos;
+}
+
+function remove_width_attribute( $html ) {
+	   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+	   return $html;
+	}
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 add_action( 'admin_menu', 'wpse_59032_remove_acf_menu', 9999 );
 add_action( 'admin_head-edit.php', 'wpse_59032_block_acf_screens' );
