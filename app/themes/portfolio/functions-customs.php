@@ -98,7 +98,7 @@ function hwl_home_pagesize( $query ) {
   	// 	$featured = get_field("featured_video", 19);
   	// }
   	
-	$featured = $featured[0];
+	// $featured = $featured[0];
 
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
