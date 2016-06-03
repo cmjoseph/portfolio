@@ -12,9 +12,7 @@
 
 		</div><!-- #main -->
 		<footer id="colophon" class="site-footer" role="contentinfo">
-			<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
-				<?php wp_nav_menu( array( 'theme_location' => 'Footer Menu', 'menu_class' => 'footer-menu' ) ); ?>
-			</nav>
+			
 		</footer>
 	</div>
 

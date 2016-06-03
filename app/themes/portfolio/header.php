@@ -51,16 +51,27 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="preloader"></div>
+	<div id="preloader">
+		<div class="loader">
+			<div class="gif">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/loader.gif" alt="">
+			</div>
+		</div>
+	</div>
 	<div id="page" class="hfeed site">
 		<header id="masthead" class="site-header" role="banner">
-			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-			</a>
-			<div id="navbar" class="navbar">
-				<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'Header Menu', 'menu_class' => 'header-menu' ) ); ?>
-				</nav>
+			<div class="sidemenu">
+				<div id="navbar" class="navbar">
+					<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
+						<?php 
+							wp_nav_menu( array( 
+								'theme_location' => 'menu-header', 
+								'menu_class' => 'nav-menu-header',
+								) 
+							);
+						?>
+					</nav>
+				</div>
 			</div>
 		</header>
 		<div id="main" class="site-main">

@@ -1,6 +1,10 @@
+@import 'utils/variables';
+
 @import 'utils/reset';
 @import 'utils/fonts';
 @import 'utils/utils';
+@import 'utils/slider';
 
 @import 'core/global';
-@import 'partials/header';
+@import 'core/partials/header';
+@import 'core/home';

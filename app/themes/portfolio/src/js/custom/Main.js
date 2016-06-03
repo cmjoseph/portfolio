@@ -31,10 +31,6 @@ class Main {
 	}
 
 	resize () {
-		const w = window.innerWidth;
-		const h = window.innerHeight;
-
-		this.header.resize(w,h);
 		this.page.resize();
 	}
 

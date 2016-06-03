@@ -2,7 +2,7 @@ const src = './src';
 const app = '.';
 
 const config = {
-	browserSupport : ['last 2 versions'],
+	browserSupport : ['last 3 versions'],
 	src : {
 		path 	: src,
 		custom 	: src + '/js/custom/Main.js',

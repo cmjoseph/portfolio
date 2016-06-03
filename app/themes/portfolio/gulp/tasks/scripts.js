@@ -36,7 +36,10 @@ gulp.task('scripts:custom', () =>{
 gulp.task('scripts:browserify', () => {
     const bundler = browserify({
         entries : config.src.custom
-    }).transform(babelify, { 'presets': ['es2015'] })
+    }).transform(babelify, { 'presets': ['es2015'], "plugins": [    'transform-es2015-block-scoping',
+                                                                    ['transform-es2015-classes', { loose: true }], 
+                                                                    'transform-proto-to-assign',
+                                                                    'transform-runtime' ]});
 
     bundle(bundler, config.dist.filename);
 });
@@ -44,11 +47,14 @@ gulp.task('scripts:browserify', () => {
 gulp.task('scripts:watchify', () => {
     const bundler = watchify(browserify({
         entries : config.src.custom,
-        debug: true,
+        debug: false,
         cache: {}, 
         packageCache: {}, 
         fullPaths: true
-    })).transform(babelify, { 'presets': ['es2015'] })
+    })).transform(babelify, { 'presets': ['es2015'], "plugins": [    'transform-es2015-block-scoping',
+                                                                    ['transform-es2015-classes', { loose: true }], 
+                                                                    'transform-proto-to-assign',
+                                                                    'transform-runtime' ]});
 
     bundle(bundler, config.dist.filename);
 
@@ -63,9 +69,9 @@ gulp.task('scripts:watchify', () => {
 
 
 gulp.task('scripts:libs', () =>{
-     return gulp.src(config.src.libs)
-        .pipe(concat('vendors.js'))
-        .pipe(gulp.dest(config.dist.vendors));
+    return gulp.src( [config.src.path + '/js/libs/jquery.min.js', config.src.libs] )
+       .pipe(concat('vendors.js'))
+       .pipe(gulp.dest(config.dist.vendors));
 });
 
 
@@ -97,9 +103,10 @@ const bundle = (bundler, filename) => {
         })
         .pipe(source(filename + '.js'))
         .pipe(buffer())
-        .pipe(options.debug ? sourcemaps.init({ loadMaps: true }) : util.noop())
+        //.pipe(options.debug ? sourcemaps.init({ loadMaps: true }) : util.noop())
         .pipe(uglify(uglifyOptions))
         .pipe(options.production ? header(banner, { pkg : pkg }) : util.noop())
-        .pipe(options.debug ? sourcemaps.write('./') : util.noop())
+        //.pipe(options.debug ? sourcemaps.write('./') : util.noop())
+        //.pipe(options.debug ? sourcemaps.write() : util.noop())
         .pipe(gulp.dest(config.dist.custom))
 };

@@ -64,8 +64,8 @@
 	MENUS
 */
 
-	register_nav_menu( 'menu-header',"Header Menu" );
-	register_nav_menu( 'menu-footer',"Footer Menu" ); 
+	register_nav_menu( 'menu-header', "Header_Menu" );
+	register_nav_menu( 'menu-footer', "Footer_Menu" ); 
 
     /**
 	STYLES
@@ -131,10 +131,17 @@
 		    $post_type = $post_type;
 		else
 		    $post_type = array('nav_menu_item', 'post','news', 'team', 'eckotv'); // replace cpt to your custom post type
-	    $query->set('post_type',$post_type);
-		return $query;
+	    	$query->set('post_type',$post_type);
+			return $query;
 	    }
 	}
+
+	// Remove Comment Post
+	function my_remove_menu_pages() {
+		remove_menu_page('edit.php');
+		remove_menu_page('edit-comments.php');
+	}
+	add_action( 'admin_menu', 'my_remove_menu_pages' );
 
 function twentythirteen_setup() {
 	/*
