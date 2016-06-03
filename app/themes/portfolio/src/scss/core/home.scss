@@ -1,0 +1,25 @@
+section.home{
+	background-color: lightblue;
+	.rslides{
+		display: table;
+		height: 100%;
+		> .slide{
+			display: table;
+			height: 100%;
+			.picture{
+				display: table;
+				width: 100%;
+				height: 100%;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+			.video{
+				video{
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}

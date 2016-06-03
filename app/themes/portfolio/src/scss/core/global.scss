@@ -1,0 +1,26 @@
+html, body{
+	@include smooth;
+}
+
+#preloader{
+	position: fixed;
+	top: 0;
+	left:0;
+	bottom:0;
+	right:0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	background-color: black;
+	.loader{
+		display: table;
+		margin: 0 auto;
+		height: 100%;
+		position: relative;
+		.gif{
+			display: table-cell;
+			vertical-align: middle;
+			height: 100%;
+		}
+	}
+}

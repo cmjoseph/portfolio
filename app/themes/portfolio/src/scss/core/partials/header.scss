@@ -1,0 +1,29 @@
+header{
+	position: fixed;
+	width: 15%;
+	display: table;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0,0,0, 0.7);
+	.sidemenu{
+		display: table-cell;
+		vertical-align: middle;
+		height: 100%;
+		padding: $pad;
+		text-align: left;
+		.navbar{
+			nav{
+				font-family: $workeb;
+				text-transform: uppercase;
+				.nav-menu-header{
+					li{
+						> a{
+							color: white;
+							font-size: $h1;
+						}
+					}
+				}
+			}
+		}
+	}
+}
