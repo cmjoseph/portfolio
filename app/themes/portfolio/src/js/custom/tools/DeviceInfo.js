@@ -21,8 +21,12 @@ class DeviceInfo {
       	window.isChrome   = !window.isOpera && ( nua.indexOf("chrome") > -1 ) ? true : false;
       	window.isSafari   = !window.isOpera && !window.isChrome && ( nua.indexOf("safari") > -1 ) ? true : false;
       	window.isFirefox  = ( nua.indexOf("firefox") > -1 ) ? true : false;
+      	window.isIOS 	  = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      	window.isAndroid  = nua.indexOf("android") > -1 ? true : false;
 
       	if(window.isIE) $('body').addClass('ie');
+      	if(window.isIOS) $('body').addClass('ios');
+      	if(window.isAndroid) $('body').addClass('android');
 
     }
 

@@ -1,5 +1,13 @@
 html, body{
 	@include smooth;
+	font-family: $workeb;
+	overflow-x: hidden;
+	line-height: 1;
+}
+
+a{
+	display: block;
+	transition: color .35s ease;
 }
 
 #preloader{

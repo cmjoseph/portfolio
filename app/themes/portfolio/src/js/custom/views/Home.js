@@ -3,6 +3,7 @@
  */
 
 import PageBase from './PageBase';
+import Animation from '../tools/Animation';
 
 class Home extends PageBase {
 
@@ -20,8 +21,20 @@ class Home extends PageBase {
 
 	sliderSwipe(){
 		this.slider = $('#slides');
+		this.text = document.querySelectorAll('.text');
+
+		TweenMax.delayedCall(1, function(){
+			TweenLite.lagSmoothing(0);
+			Animation.textAnimFadeTop(this.text);
+		}.bind(this));
+
 		this.slider.responsiveSlides({
-			timeout: 30000,
+			timeout: 5000,
+			auto: true,
+			before: function(){
+				this.text = document.querySelectorAll('.text');
+				Animation.textAnimFadeTop(this.text);
+			}
 		});
 	}
 
@@ -30,7 +43,7 @@ class Home extends PageBase {
 		this.section = document.getElementById('home');
 		let sidebarWidth = this.sidebar.offsetWidth;
 		TweenLite.to(this.sidebar ,.5, {x:'-'+sidebarWidth+'', ease:Power2.easeOut});
-		TweenLite.to(this.sidebar ,.5, {x:"0", ease:Power2.easeOut, delay:0.5});
+		TweenLite.to(this.sidebar ,.5, {x:"0", ease:Power2.easeOut, delay:2});
 	}
 
 	resize () {

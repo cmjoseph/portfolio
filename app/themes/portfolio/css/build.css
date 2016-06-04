@@ -236,6 +236,25 @@ button {
 
 /* Retina */
 /* Smart Hidden */
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px); } }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px); } }
+
 .rslides {
   position: relative;
   list-style: none;
@@ -263,7 +282,14 @@ button {
 
 html, body {
   -webkit-font-smoothing: antialiased;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  font-family: "WorkSans-ExtraBold";
+  overflow-x: hidden;
+  line-height: 1; }
+
+a {
+  display: block;
+  transition: color .35s ease; }
 
 #preloader {
   position: fixed;
@@ -287,32 +313,84 @@ html, body {
 
 header {
   position: fixed;
-  width: 15%;
-  display: table;
-  height: 100%;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.7); }
-  header .sidemenu {
-    display: table-cell;
-    vertical-align: middle;
+  z-index: 10; }
+  header.desktop {
+    width: auto;
+    display: table;
     height: 100%;
-    padding: 20px;
-    text-align: left; }
-    header .sidemenu .navbar nav {
-      font-family: "WorkSans-ExtraBold";
-      text-transform: uppercase; }
-      header .sidemenu .navbar nav .nav-menu-header li > a {
-        color: white;
-        font-size: 48px; }
+    background-color: black; }
+    header.desktop .sidemenu {
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      padding: 20px;
+      text-align: left; }
+      header.desktop .sidemenu .navbar nav {
+        text-transform: uppercase; }
+        header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
+          color: white;
+          font-size: 40px; }
+          header.desktop .sidemenu .navbar nav .nav-menu-header li > a:hover, header.desktop .sidemenu .navbar nav .nav-menu-header li > a:focus {
+            color: red; }
+        header.desktop .sidemenu .navbar nav .nav-menu-header li + li {
+          margin-top: 5px; }
+  header.mobile {
+    display: none;
+    width: 100%;
+    background-color: black; }
+    header.mobile .sidemenu {
+      display: table;
+      width: 100%;
+      height: auto; }
+      header.mobile .sidemenu .navbar {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%; }
+        header.mobile .sidemenu .navbar .nav-control {
+          display: table;
+          width: 100%;
+          height: 50px;
+          background-color: red; }
+          header.mobile .sidemenu .navbar .nav-control > span {
+            display: table-cell;
+            vertical-align: middle;
+            width: 50%;
+            height: 100%; }
+            header.mobile .sidemenu .navbar .nav-control > span.left {
+              text-align: left;
+              padding-left: 20px; }
+            header.mobile .sidemenu .navbar .nav-control > span.right {
+              text-align: right;
+              padding-right: 20px; }
+        header.mobile .sidemenu .navbar nav {
+          text-transform: uppercase; }
+          header.mobile .sidemenu .navbar nav .nav-menu-header li {
+            text-align: center; }
+            header.mobile .sidemenu .navbar nav .nav-menu-header li > a {
+              color: white;
+              font-size: 20px;
+              display: block;
+              padding: 20px 0;
+              width: 100%; }
+              header.mobile .sidemenu .navbar nav .nav-menu-header li > a:hover, header.mobile .sidemenu .navbar nav .nav-menu-header li > a:focus {
+                background-color: blue;
+                color: red; }
 
 section.home {
-  background-color: lightblue; }
+  background-color: black; }
   section.home .rslides {
     display: table;
     height: 100%; }
     section.home .rslides > .slide {
       display: table;
-      height: 100%; }
+      height: 100%;
+      position: absolute;
+      top: 0; }
+      section.home .rslides > .slide .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        width: 100%;
+        height: 100%; }
       section.home .rslides > .slide .picture {
         display: table;
         width: 100%;
@@ -320,8 +398,50 @@ section.home {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center; }
-      section.home .rslides > .slide .video video {
-        width: 100%;
-        height: 100%; }
+      section.home .rslides > .slide .caption {
+        position: absolute;
+        display: table-cell;
+        width: 89%;
+        height: 100%;
+        top: 0;
+        right: 0; }
+        section.home .rslides > .slide .caption__inner {
+          display: table;
+          width: 100%;
+          height: 100%;
+          max-width: 700px;
+          margin: 0 auto; }
+          section.home .rslides > .slide .caption__inner .text {
+            visibility: hidden;
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%;
+            text-align: center;
+            font-size: 80px;
+            color: white;
+            text-transform: uppercase; }
+            section.home .rslides > .slide .caption__inner .text small {
+              text-transform: initial;
+              font-size: 18px;
+              display: inline-block;
+              width: 100%;
+              font-style: italic; }
+            @media (max-width: 1440px) {
+  header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
+    font-size: 24px; } }
+            @media (max-width: 768px) {
+  header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
+    font-size: 20px; } }
+            @media (max-width: 1024px) {
+  header.desktop {
+    display: none; }
+  header.mobile {
+    display: block; }
+  section.home .rslides > .slide .caption {
+    width: 100%; }
+  section.home .rslides > .slide .caption__inner .text {
+    padding: 20px;
+    font-size: 45px; } }
 
 /*# sourceMappingURL=build.css.map */

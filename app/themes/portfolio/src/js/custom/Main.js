@@ -1,6 +1,7 @@
 $ = jQuery;
 
 import DeviceInfo from './tools/DeviceInfo';
+import Animation from './tools/Animation';
 import PageBase from './views/PageBase';
 import Header from "./views/shared/Header";
 import Home from "./views/Home";

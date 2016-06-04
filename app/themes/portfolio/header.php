@@ -59,16 +59,27 @@
 		</div>
 	</div>
 	<div id="page" class="hfeed site">
-		<header id="masthead" class="site-header" role="banner">
+		<header id="masthead" class="site-header desktop" role="banner">
 			<div class="sidemenu">
 				<div id="navbar" class="navbar">
 					<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
 						<?php 
-							wp_nav_menu( array( 
-								'theme_location' => 'menu-header', 
-								'menu_class' => 'nav-menu-header',
-								) 
-							);
+							wp_nav_menu( array('theme_location' => 'menu-header', 'menu_class' => 'nav-menu-header') );
+						?>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<header id="masthead-mobile" class="site-header mobile" role="banner">
+			<div class="sidemenu">
+				<div id="navbar" class="navbar">
+					<div class="nav-control">
+						<span class="left" id="logo">Logo</span>
+						<span class="right" id="burger">Burger</span>
+					</div>
+					<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
+						<?php 
+							wp_nav_menu( array('theme_location' => 'menu-header', 'menu_class' => 'nav-menu-header') );
 						?>
 					</nav>
 				</div>
