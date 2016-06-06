@@ -280,6 +280,79 @@ button {
     width: 100%;
     border: 0; }
 
+#icon-burger {
+  width: 35px;
+  height: 23px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer; }
+
+#icon-burger span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 50%;
+  background: black;
+  opacity: 1;
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  transition: .25s ease-in-out; }
+
+#icon-burger span:nth-child(even) {
+  left: 50%;
+  border-radius: 0; }
+
+#icon-burger span:nth-child(odd) {
+  left: 0px;
+  border-radius: 0; }
+
+#icon-burger span:nth-child(1), #icon-burger span:nth-child(2) {
+  top: 0px; }
+
+#icon-burger span:nth-child(3), #icon-burger span:nth-child(4) {
+  top: 9px; }
+
+#icon-burger span:nth-child(5), #icon-burger span:nth-child(6) {
+  top: 18px; }
+
+#icon-burger.open span:nth-child(1), #icon-burger.open span:nth-child(6) {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+#icon-burger.open span:nth-child(2), #icon-burger.open span:nth-child(5) {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
+
+#icon-burger.open span:nth-child(1) {
+  left: 5px;
+  top: 5px; }
+
+#icon-burger.open span:nth-child(2) {
+  left: calc(50% - 5px);
+  top: 5px; }
+
+#icon-burger.open span:nth-child(3) {
+  left: -50%;
+  opacity: 0; }
+
+#icon-burger.open span:nth-child(4) {
+  left: 100%;
+  opacity: 0; }
+
+#icon-burger.open span:nth-child(5) {
+  left: 5px;
+  top: 13px; }
+
+#icon-burger.open span:nth-child(6) {
+  left: calc(50% - 5px);
+  top: 13px; }
+
 html, body {
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
@@ -318,18 +391,25 @@ header {
     width: auto;
     display: table;
     height: 100%;
-    background-color: black; }
+    background-color: transparent; }
     header.desktop .sidemenu {
+      position: relative;
       display: table-cell;
       vertical-align: middle;
       height: 100%;
       padding: 20px;
       text-align: left; }
+      header.desktop .sidemenu .logo {
+        position: absolute;
+        top: 20px;
+        color: white;
+        text-transform: uppercase; }
       header.desktop .sidemenu .navbar nav {
         text-transform: uppercase; }
         header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
           color: white;
-          font-size: 40px; }
+          font-size: 40px;
+          transition: all .35s ease; }
           header.desktop .sidemenu .navbar nav .nav-menu-header li > a:hover, header.desktop .sidemenu .navbar nav .nav-menu-header li > a:focus {
             color: red; }
         header.desktop .sidemenu .navbar nav .nav-menu-header li + li {
@@ -350,19 +430,25 @@ header {
           display: table;
           width: 100%;
           height: 50px;
-          background-color: red; }
-          header.mobile .sidemenu .navbar .nav-control > span {
+          background-color: white; }
+          header.mobile .sidemenu .navbar .nav-control > div {
             display: table-cell;
             vertical-align: middle;
-            width: 50%;
             height: 100%; }
-            header.mobile .sidemenu .navbar .nav-control > span.left {
+            header.mobile .sidemenu .navbar .nav-control > div.left {
+              width: 70%;
               text-align: left;
               padding-left: 20px; }
-            header.mobile .sidemenu .navbar .nav-control > span.right {
+            header.mobile .sidemenu .navbar .nav-control > div.right {
+              width: 30%;
               text-align: right;
-              padding-right: 20px; }
+              padding-right: 20px;
+              cursor: pointer; }
+              header.mobile .sidemenu .navbar .nav-control > div.right > div {
+                float: right; }
         header.mobile .sidemenu .navbar nav {
+          height: 0;
+          overflow: hidden;
           text-transform: uppercase; }
           header.mobile .sidemenu .navbar nav .nav-menu-header li {
             text-align: center; }
@@ -373,7 +459,7 @@ header {
               padding: 20px 0;
               width: 100%; }
               header.mobile .sidemenu .navbar nav .nav-menu-header li > a:hover, header.mobile .sidemenu .navbar nav .nav-menu-header li > a:focus {
-                background-color: blue;
+                background-color: grey;
                 color: red; }
 
 section.home {
@@ -387,7 +473,7 @@ section.home {
       position: absolute;
       top: 0; }
       section.home .rslides > .slide .overlay {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         position: absolute;
         width: 100%;
         height: 100%; }
@@ -401,7 +487,7 @@ section.home {
       section.home .rslides > .slide .caption {
         position: absolute;
         display: table-cell;
-        width: 89%;
+        width: 100%;
         height: 100%;
         top: 0;
         right: 0; }
@@ -418,11 +504,12 @@ section.home {
             vertical-align: middle;
             height: 100%;
             text-align: center;
-            font-size: 80px;
-            color: white;
-            text-transform: uppercase; }
+            color: white; }
+            section.home .rslides > .slide .caption__inner .text p {
+              font-size: 80px;
+              text-transform: uppercase; }
             section.home .rslides > .slide .caption__inner .text small {
-              text-transform: initial;
+              margin-top: 20px;
               font-size: 18px;
               display: inline-block;
               width: 100%;
@@ -441,7 +528,8 @@ section.home {
   section.home .rslides > .slide .caption {
     width: 100%; }
   section.home .rslides > .slide .caption__inner .text {
-    padding: 20px;
+    padding: 20px; }
+  section.home .rslides > .slide .caption__inner .text p {
     font-size: 45px; } }
 
 /*# sourceMappingURL=build.css.map */

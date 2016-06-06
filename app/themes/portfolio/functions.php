@@ -57,8 +57,7 @@
 	IMAGE SIZE
 */
 
-	// add_image_size("fullscreen", 1400, 900, true);
-
+	add_image_size("fullscreen", 1920, 955, true);
 	
 /**
 	MENUS

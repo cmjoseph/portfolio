@@ -61,6 +61,7 @@
 	<div id="page" class="hfeed site">
 		<header id="masthead" class="site-header desktop" role="banner">
 			<div class="sidemenu">
+				<div id="logo" class="logo">Claude Marc Joseph<br/>Web Developer</div>
 				<div id="navbar" class="navbar">
 					<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
 						<?php 
@@ -74,10 +75,19 @@
 			<div class="sidemenu">
 				<div id="navbar" class="navbar">
 					<div class="nav-control">
-						<span class="left" id="logo">Logo</span>
-						<span class="right" id="burger">Burger</span>
+						<div class="left" id="logo">Claude Marc Joseph<br/>Web Developer</div>
+						<div class="right" id="burger">
+							<div id="icon-burger">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
 					</div>
-					<nav id="site-navigation-header" class="navigation main-navigation" role="navigation">
+					<nav id="site-navigation-header-mobile" class="navigation main-navigation" role="navigation">
 						<?php 
 							wp_nav_menu( array('theme_location' => 'menu-header', 'menu_class' => 'nav-menu-header') );
 						?>

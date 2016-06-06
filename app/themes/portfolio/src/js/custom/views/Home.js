@@ -30,7 +30,7 @@ class Home extends PageBase {
 
 		this.slider.responsiveSlides({
 			timeout: 5000,
-			auto: true,
+			auto: false,
 			before: function(){
 				this.text = document.querySelectorAll('.text');
 				Animation.textAnimFadeTop(this.text);

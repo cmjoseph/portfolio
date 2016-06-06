@@ -15,7 +15,10 @@ get_header();
 			<div class="picture" style="background-image: url('http://img0.mxstatic.com/wallpapers/e51affa434533b44445fc00b5d60ad5f_large.jpeg')"></div>
 			<div class="caption">
 				<div class="caption__inner">
-					<div class="text one">Making The Web A Better Place<small>- An Awesome Dude</small></div>
+					<div class="text one">
+						<p>Making The Web A Better Place</p>
+						<small>- An Awesome Dude</small>
+					</div>
 				</div>
 			</div>
 		</li>
