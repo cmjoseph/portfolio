@@ -9,7 +9,7 @@ class Header extends PageBase {
 		super();
 		this.sidemenu();
 		this.mobilemenu();
-		window.onresize = this.resize();
+		this.resize();
 	}
 
 	sidemenu() {
@@ -43,7 +43,6 @@ class Header extends PageBase {
 		this.submenu = document.getElementById('site-navigation-header-mobile');
 		this.icon = document.getElementById('icon-burger');
 		const w = window.innerWidth;
-		console.log(w);
 		if (w > 1024) {
 			TweenLite.to(this.submenu, 0.2, {height:0});
             this.submenu.classList.remove('open');

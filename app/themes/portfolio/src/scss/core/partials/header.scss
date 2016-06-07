@@ -27,7 +27,7 @@ header{
 							> a{
 								color: white;
 								font-size: $h1;
-								transition: all .35s ease;
+								transition: all $time ease;
 								&:hover, &:focus{
 									color: red;
 								}

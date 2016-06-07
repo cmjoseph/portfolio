@@ -16,18 +16,10 @@ class Main {
 	init() {
 
 		this.header = new Header();
+		this.page = new Home();
+		this.projects = new Projects();
 
 		DeviceInfo.check();
-
-		switch($('body section').attr("data-template")){
-
-			case "home": this.page = new Home();
-			break;
-
-			case "projects": this.page = new Projects();
-			break;
-
-		}
 
 	}
 

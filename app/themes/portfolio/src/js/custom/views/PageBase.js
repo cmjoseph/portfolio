@@ -14,7 +14,6 @@ class PageBase {
 		TweenLite.set($("#preloader"),{css:{display:"block"},delay:0.8});
 	}
 
-
 	display() {
 
 	}

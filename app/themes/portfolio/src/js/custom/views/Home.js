@@ -11,7 +11,8 @@ class Home extends PageBase {
 		super();
 		this.sliderSwipe();
 		this.menu();
-		window.onresize = this.resize();
+		this.resize();
+		this.debounce(this.resize(), 500);
 		console.log('Home');
 	}
 
@@ -48,10 +49,21 @@ class Home extends PageBase {
 
 	resize () {
 		const h = window.innerHeight;
+		console.log(h);
 		this.sidebar = document.getElementById('masthead');
 		this.slider = document.getElementById('slides');
 		this.slider.style.height = h +'px';
 		this.sidebar.style.height = h +'px';
+	}
+
+	debounce(fn, wait) {
+		let timeout;
+		return function () {
+			clearTimeout(timeout);
+			timeout = setTimeout(function () {
+				fn.apply(this, arguments)
+			}, (wait || 1));
+		}
 	}
 }
 
