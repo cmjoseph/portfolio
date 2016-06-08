@@ -28,7 +28,10 @@ get_header();
 				<div class="picture" style="background-image: url('http://img0.mxstatic.com/wallpapers/0112fc56151fdcdd378a3db1624bc7fe_large.jpeg')"></div>
 				<div class="caption">
 					<div class="caption__inner">
-						<div class="text two">Making The Web A Better Place</div>
+						<div class="text two">
+							<p>Making The Web A Better Place</p>
+							<small>- An Awesome Dude</small>
+						</div>
 					</div>
 				</div>
 			</li>
@@ -37,46 +40,53 @@ get_header();
 				<div class="picture" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="caption">
 					<div class="caption__inner">
-						<div class="text three">Making The Web A Better Place</div>
+						<div class="text three">
+							<p>Making The Web A Better Place</p>
+							<small>- An Awesome Dude</small>
+						</div>
 					</div>
 				</div>
 			</li>
 		</ul>
 	</div>
 	<div class="home__projects" id="projects">
+		<div id="overlay" class="overlay"></div>
 		<section class="grid">
-			<a data-mh="grid__item" class="grid__item" href="#">
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
-			<a data-mh="grid__item" class="grid__item" href="#">
+			</div>
+			<div data-mh="grid-item" class="grid__item">
 				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
 				<div class="screen"></div>
-			</a>
+			</div>
+		</section>
+		<section class="grid-panel" id="grid-panel">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quia quam assumenda facilis ab aut, sunt fuga et cum fugit tempore nihil. Ex optio similique necessitatibus minima harum porro reprehenderit nostrum impedit, at. Vitae, vero.
 		</section>
 	</div>
 </section>

@@ -480,7 +480,7 @@ section.home .home__main .rslides {
         display: table;
         width: 100%;
         height: 100%;
-        max-width: 700px;
+        max-width: 40%;
         margin: 0 auto; }
         section.home .home__main .rslides > .slide .caption__inner .text {
           visibility: hidden;
@@ -500,15 +500,29 @@ section.home .home__main .rslides {
             width: 100%;
             font-style: italic; }
 
-section.home:after {
-  content: "";
-  display: table;
-  clear: both; }
-
 section.home .home__projects {
-  background-color: pink; }
+  background-color: pink;
+  position: relative;
+  overflow: hidden; }
+  section.home .home__projects:after {
+    content: "";
+    display: table;
+    clear: both; }
+  section.home .home__projects .overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: black;
+    transition: opacity 0.35s ease; }
+    section.home .home__projects .overlay.is-open {
+      opacity: 0.8;
+      z-index: 100; }
   section.home .home__projects .grid {
-    width: 85%;
+    width: calc(100% - 270px);
     float: right;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -524,17 +538,14 @@ section.home .home__projects {
       overflow: hidden;
       display: inline-table; }
       section.home .home__projects .grid .grid__item:hover .screen, section.home .home__projects .grid .grid__item:focus .screen {
-        -webkit-transform: scale(1);
-            -ms-transform: scale(1);
-                transform: scale(1); }
+        background-color: rgba(0, 0, 0, 0.8); }
       section.home .home__projects .grid .grid__item .image {
         display: table;
         width: 100%;
         height: 100%;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center center;
-        transition: all 0.35s ease; }
+        background-position: center center; }
       section.home .home__projects .grid .grid__item .screen {
         position: absolute;
         top: 0;
@@ -542,32 +553,46 @@ section.home .home__projects {
         width: 100%;
         height: 100%;
         z-index: 5;
-        background-color: rgba(0, 0, 0, 0.8);
-        -webkit-transform: scale(0);
-            -ms-transform: scale(0);
-                transform: scale(0);
-        transition: all 0.35s ease; }
-      @media (max-width: 1440px) {
+        background-color: transparent;
+        transition: background-color .70s ease; }
+  section.home .home__projects .grid-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    padding: 40px;
+    z-index: 110;
+    box-shadow: 2px 2px 2px 2px black;
+    -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+            transform: translateX(100%);
+    transition: all 0.35s ease; }
+    section.home .home__projects .grid-panel.is-open {
+      -webkit-transform: translateX(0);
+          -ms-transform: translateX(0);
+              transform: translateX(0); }
+    @media only screen and (max-width: 1024px) {
   header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
-    font-size: 24px; } }
-      @media (max-width: 768px) {
-  header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
-    font-size: 20px; }
-  section.home .home__projects .grid .grid__item {
-    width: 100%; } }
-      @media (max-width: 1024px) {
-  header.desktop {
-    display: none; }
-  header.mobile {
-    display: block; }
-  section.home .home__main .rslides > .slide .caption {
-    width: 100%; }
+    font-size: 24px; }
+  section.home .home__main .rslides > .slide .caption__inner {
+    max-width: 100%; }
   section.home .home__main .rslides > .slide .caption__inner .text {
     padding: 20px; }
   section.home .home__main .rslides > .slide .caption__inner .text p {
     font-size: 45px; }
   section.home .home__projects .grid {
-    width: 100%; }
+    width: 100%; } }
+    @media only screen and (max-width: 768px) {
+  header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
+    font-size: 20px; } }
+    @media (max-width: 1024px) {
+  header.desktop {
+    display: none; }
+  header.mobile {
+    display: block; } }
+    @media only screen and (max-width: 1200px) {
   section.home .home__projects .grid .grid__item {
     width: 50%; } }
 

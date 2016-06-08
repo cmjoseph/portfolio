@@ -1,13 +1,33 @@
 section.home{
-	@include clearfix;
 	.home__projects{
+		@include clearfix;
 		background-color: pink;
+		position: relative;
+		overflow: hidden;
+		.overlay{
+			opacity: 0;
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			background-color: black;
+			transition: opacity $time ease;
+			&.is-open{
+				opacity: 0.8;
+				z-index: 100;
+			}
+		}
 		.grid{
-			width: 85%;
+			width: calc(100% - 270px);
 			float: right;
 			display: flex;
 			flex-wrap: wrap;
 			margin: 0 -2px;
+			@media #{$tablet}{
+				width: 100%;
+			}
 			.grid__item{
 				width: 25%;
 				background-color: pink;
@@ -16,8 +36,11 @@ section.home{
 				display: inline-table;
 				&:hover, &:focus{
 					.screen{
-						transform: scale(1);
+						background-color: rgba(0,0,0,0.8);
 					}
+				}
+				@media #{$middle}{
+					width: 50%;
 				}
 				.image{
 					display: table;
@@ -26,7 +49,6 @@ section.home{
 					background-size: cover;
 					background-repeat: no-repeat;
 					background-position: center center;
-					transition: all $time ease;
 				}
 				.screen{
 					position: absolute;
@@ -35,25 +57,25 @@ section.home{
 					width: 100%;
 					height: 100%;
 					z-index: 5;
-					background-color: rgba(0,0,0,0.8);
-					transform: scale(0);
-					transition: all $time ease;
+					background-color: rgba(0,0,0,0);
+					transition: background-color .70s ease;
 				}
 			}
 		}
-		@media(max-width: $tablet){
-			.grid{
-				width: 100%;
-				.grid__item{
-					width: 50%;
-				}
-			}
-		}
-		@media(max-width: $mobile){
-			.grid{
-				.grid__item{
-					width: 100%;
-				}
+		.grid-panel{
+			position: absolute;
+			top: 0;
+			right: 0;
+			background-color: white;
+			width: 50%;
+			height: 100%;
+			padding: $pad * 2;
+			z-index: 110;
+			box-shadow: 2px 2px 2px 2px black;
+			transform: translateX(100%);
+			transition: all $time ease;
+			&.is-open{
+				transform: translateX(0);
 			}
 		}
 	}

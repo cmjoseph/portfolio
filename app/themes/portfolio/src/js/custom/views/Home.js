@@ -11,7 +11,6 @@ class Home extends PageBase {
 		super();
 		this.sliderSwipe();
 		this.menu();
-		this.resize();
 		this.debounce(this.resize(), 500);
 		console.log('Home');
 	}
@@ -31,7 +30,7 @@ class Home extends PageBase {
 
 		this.slider.responsiveSlides({
 			timeout: 5000,
-			auto: false,
+			auto: true,
 			before: function(){
 				this.text = document.querySelectorAll('.text');
 				Animation.textAnimFadeTop(this.text);
@@ -47,15 +46,6 @@ class Home extends PageBase {
 		TweenLite.to(this.sidebar ,.5, {x:"0", ease:Power2.easeOut, delay:2});
 	}
 
-	resize () {
-		const h = window.innerHeight;
-		console.log(h);
-		this.sidebar = document.getElementById('masthead');
-		this.slider = document.getElementById('slides');
-		this.slider.style.height = h +'px';
-		this.sidebar.style.height = h +'px';
-	}
-
 	debounce(fn, wait) {
 		let timeout;
 		return function () {
@@ -65,6 +55,15 @@ class Home extends PageBase {
 			}, (wait || 1));
 		}
 	}
+
+	resize () {
+		const h = window.innerHeight;
+		this.sidebar = document.getElementById('masthead');
+		this.slider = document.getElementById('slides');
+		this.slider.style.height = h +'px';
+		this.sidebar.style.height = h +'px';
+	}
+
 }
 
 export default Home;

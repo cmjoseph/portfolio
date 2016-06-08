@@ -31,10 +31,10 @@ header{
 								&:hover, &:focus{
 									color: red;
 								}
-								@media(max-width: $desktop){
+								@media #{$tablet}{
 									font-size: $h1-tab;
 								}
-								@media(max-width: $mobile){
+								@media #{$mobile}{
 									font-size: $h1-mob;
 								}
 							}
@@ -110,7 +110,7 @@ header{
 	}
 }
 
-@media(max-width: $tablet){
+@media(max-width: 1024px){
 	header{
 		&.desktop{
 			display: none;
