@@ -49,44 +49,66 @@ get_header();
 			</li>
 		</ul>
 	</div>
+	<?php 
+
+	$args = array(	
+		'post_type' => 'projects',
+		
+
+	)
+
+
+	 ?>
 	<div class="home__projects" id="projects">
 		<div id="overlay" class="overlay"></div>
 		<section class="grid">
-			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+			<div data-mh="grid-item" class="grid__item" data-title="Post Test" data-image="http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg" data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, vero." data-web="http://www.google.com">
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 			<div data-mh="grid-item" class="grid__item">
-				<div class="image" style="background-image: url('http://img0.mxstatic.com/wallpapers/a8d26751b864cddf91632cddb1232363_large.jpeg')"></div>
+				<div class="image" style="background-image: url('https://placeimg.com/872/400/any')"></div>
 				<div class="screen"></div>
 			</div>
 		</section>
-		<section class="grid-panel" id="grid-panel">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quia quam assumenda facilis ab aut, sunt fuga et cum fugit tempore nihil. Ex optio similique necessitatibus minima harum porro reprehenderit nostrum impedit, at. Vitae, vero.
+		<section class="panel" id="grid-panel">
+			<div class="panel__content">
+				<h2>Project</h2>
+				<div class="image">
+					<a class="screen">
+						<span class="window"></span>
+						<img src="https://placeimg.com/872/400/any" alt="">
+					</a>
+				</div>
+				<article>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus eius eligendi a similique non, neque, quod iste. Quo, rerum, nostrum. Nisi eum, ut animi molestias quam, consequatur dolor natus sequi architecto ea nobis, perferendis. Temporibus, consequatur repellendus nam illum reprehenderit possimus. In debitis saepe vitae iure asperiores molestias, deserunt, delectus unde sequi nulla quod quae voluptatum, aspernatur eligendi? Sint, vero.
+				</article>
+				<a class="btn-cta" href="">Website</a>
+			</div>
 		</section>
 	</div>
 </section>

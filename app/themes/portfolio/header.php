@@ -51,14 +51,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="preloader">
-		<div class="loader">
-			<div class="gif">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/loader.gif" alt="">
-			</div>
-		</div>
-	</div>
+	<div id="preloader"></div>
 	<div id="page" class="hfeed site">
+
 		<header id="masthead" class="site-header desktop" role="banner">
 			<div class="sidemenu">
 				<div id="logo" class="logo">Claude Marc Joseph<br/>Web Developer</div>
@@ -71,6 +66,20 @@
 				</div>
 			</div>
 		</header>
+
+		<header id="sticky" class="site-header sticky" role="banner">
+			<div class="sidemenu">
+				<div id="logo-sticky" class="logo">Claude Marc Joseph<br/>Web Developer</div>
+				<div id="navbar-sticky" class="navbar">
+					<nav id="site-navigation-sticky" class="navigation main-navigation" role="navigation">
+						<?php 
+							wp_nav_menu( array('theme_location' => 'menu-header', 'menu_class' => 'nav-menu-header-sticky') );
+						?>
+					</nav>
+				</div>
+			</div>
+		</header>
+
 		<header id="masthead-mobile" class="site-header mobile" role="banner">
 			<div class="sidemenu">
 				<div id="navbar" class="navbar">

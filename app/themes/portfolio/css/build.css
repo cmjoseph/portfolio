@@ -338,9 +338,9 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   font-family: "WorkSans-ExtraBold";
-  overflow-x: hidden;
   line-height: 1;
-  background-color: black; }
+  background-color: black;
+  height: 100%; }
 
 a {
   display: block;
@@ -356,24 +356,59 @@ a {
   height: 100%;
   z-index: 99999;
   background-color: black; }
-  #preloader .loader {
-    display: table;
-    margin: 0 auto;
-    height: 100%;
-    position: relative; }
-    #preloader .loader .gif {
-      display: table-cell;
-      vertical-align: middle;
-      height: 100%; }
 
 section.home > div {
   display: table;
   width: 100%;
   height: 100%; }
 
+.btn-cta {
+  padding: 10px 20px;
+  background-color: #35735f;
+  display: inline-block;
+  color: white;
+  margin-top: 20px; }
+
 header {
-  position: fixed;
+  position: absolute;
   z-index: 10; }
+  header.sticky {
+    top: -65px;
+    position: fixed;
+    z-index: 20;
+    background-color: #35735f;
+    width: 100%;
+    height: 65px;
+    display: table; }
+    header.sticky .sidemenu {
+      display: table;
+      width: 100%;
+      height: 100%;
+      padding: 0 20px; }
+      header.sticky .sidemenu .logo {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+        text-transform: uppercase;
+        color: white; }
+      header.sticky .sidemenu .navbar {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%; }
+        header.sticky .sidemenu .navbar .nav-menu-header-sticky {
+          display: block;
+          float: right;
+          text-transform: uppercase; }
+          header.sticky .sidemenu .navbar .nav-menu-header-sticky li {
+            display: inline-block;
+            padding-right: 60px; }
+            header.sticky .sidemenu .navbar .nav-menu-header-sticky li > a {
+              color: white;
+              font-size: 20px;
+              transition: all 0.35s ease;
+              opacity: 1; }
+              header.sticky .sidemenu .navbar .nav-menu-header-sticky li > a:hover, header.sticky .sidemenu .navbar .nav-menu-header-sticky li > a:focus {
+                opacity: 0.5; }
   header.desktop {
     width: auto;
     display: table;
@@ -398,10 +433,13 @@ header {
           font-size: 40px;
           transition: all 0.35s ease; }
           header.desktop .sidemenu .navbar nav .nav-menu-header li > a:hover, header.desktop .sidemenu .navbar nav .nav-menu-header li > a:focus {
-            color: red; }
+            color: #35735f; }
         header.desktop .sidemenu .navbar nav .nav-menu-header li + li {
           margin-top: 5px; }
   header.mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: none;
     width: 100%;
     background-color: black; }
@@ -501,7 +539,7 @@ section.home .home__main .rslides {
             font-style: italic; }
 
 section.home .home__projects {
-  background-color: pink;
+  background-color: black;
   position: relative;
   overflow: hidden; }
   section.home .home__projects:after {
@@ -517,12 +555,12 @@ section.home .home__projects {
     height: 100%;
     z-index: 1;
     background-color: black;
-    transition: opacity 0.35s ease; }
+    transition: opacity 1s ease; }
     section.home .home__projects .overlay.is-open {
       opacity: 0.8;
       z-index: 100; }
   section.home .home__projects .grid {
-    width: calc(100% - 270px);
+    width: 100%;
     float: right;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -532,8 +570,9 @@ section.home .home__projects {
             flex-wrap: wrap;
     margin: 0 -2px; }
     section.home .home__projects .grid .grid__item {
+      cursor: pointer;
       width: 25%;
-      background-color: pink;
+      background-color: black;
       position: relative;
       overflow: hidden;
       display: inline-table; }
@@ -555,25 +594,44 @@ section.home .home__projects {
         z-index: 5;
         background-color: transparent;
         transition: background-color .70s ease; }
-  section.home .home__projects .grid-panel {
-    position: absolute;
+  section.home .home__projects .panel {
+    position: fixed;
     top: 0;
     right: 0;
-    background-color: white;
     width: 50%;
-    height: 100%;
-    padding: 40px;
     z-index: 110;
-    box-shadow: 2px 2px 2px 2px black;
+    padding: 40px;
     -webkit-transform: translateX(100%);
         -ms-transform: translateX(100%);
             transform: translateX(100%);
     transition: all 0.35s ease; }
-    section.home .home__projects .grid-panel.is-open {
+    section.home .home__projects .panel.is-open {
       -webkit-transform: translateX(0);
           -ms-transform: translateX(0);
               transform: translateX(0); }
-    @media only screen and (max-width: 1024px) {
+    section.home .home__projects .panel__content {
+      box-shadow: inset 0 0 0 20px #35735f;
+      padding: 40px;
+      background-color: white; }
+      section.home .home__projects .panel__content h2 {
+        font-size: 25px; }
+      section.home .home__projects .panel__content .image {
+        padding: 20px 0; }
+        section.home .home__projects .panel__content .image .screen {
+          position: relative; }
+          section.home .home__projects .panel__content .image .screen .window {
+            transition: background-color 0.35s ease;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(53, 115, 95, 0);
+            max-height: 400px;
+            overflow: hidden; }
+            section.home .home__projects .panel__content .image .screen .window:hover, section.home .home__projects .panel__content .image .screen .window:focus {
+              background-color: rgba(53, 115, 95, 0.5); }
+          section.home .home__projects .panel__content .image .screen img {
+            width: 100%; }
+          @media only screen and (max-width: 1024px) {
   header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
     font-size: 24px; }
   section.home .home__main .rslides > .slide .caption__inner {
@@ -584,15 +642,15 @@ section.home .home__projects {
     font-size: 45px; }
   section.home .home__projects .grid {
     width: 100%; } }
-    @media only screen and (max-width: 768px) {
+          @media only screen and (max-width: 768px) {
   header.desktop .sidemenu .navbar nav .nav-menu-header li > a {
     font-size: 20px; } }
-    @media (max-width: 1024px) {
-  header.desktop {
+          @media (max-width: 1024px) {
+  header.desktop, header.sticky {
     display: none; }
   header.mobile {
     display: block; } }
-    @media only screen and (max-width: 1200px) {
+          @media only screen and (max-width: 1200px) {
   section.home .home__projects .grid .grid__item {
     width: 50%; } }
 

@@ -6,10 +6,36 @@ import PageBase from './../PageBase';
 class Header extends PageBase {
 
 	constructor() {
+		console.log('header');
 		super();
 		this.sidemenu();
 		this.mobilemenu();
 		this.resize();
+		this.headerSticky();
+		this.anchorScroll();
+	}
+
+	anchorScroll() {
+		$('a[href^="#"]').on('click',function (e) {
+		    e.preventDefault();
+		    let target = this.hash;
+		    let $target = $(target);
+		    $('html, body').stop().animate({'scrollTop': $target.offset().top
+		    }, 500, 'swing', function () {
+		        window.location.hash = target;
+		    });
+		});
+	}
+
+	headerSticky() {
+		this.sticky = document.getElementById('sticky');
+        window.addEventListener('scroll', function(e) {
+            if ($(this).scrollTop() > 500){  
+                TweenMax.to(this.sticky, 0.1 , {y:65, ease:Power2.easeInOut});
+            } else{
+                TweenMax.to(this.sticky, 0.1 , {y:0, ease:Power2.easeInOut});
+            }
+        });
 	}
 
 	sidemenu() {
@@ -36,7 +62,6 @@ class Header extends PageBase {
                	this.submenu.classList.add('open');
             }
 		}
-       
 	}
 
 	resize () {

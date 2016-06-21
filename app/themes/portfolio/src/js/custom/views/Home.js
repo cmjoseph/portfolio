@@ -10,7 +10,7 @@ class Home extends PageBase {
 	constructor() {
 		super();
 		this.sliderSwipe();
-		this.menu();
+		// this.menu();
 		this.debounce(this.resize(), 500);
 		console.log('Home');
 	}
@@ -30,7 +30,7 @@ class Home extends PageBase {
 
 		this.slider.responsiveSlides({
 			timeout: 5000,
-			auto: true,
+			auto: false,
 			before: function(){
 				this.text = document.querySelectorAll('.text');
 				Animation.textAnimFadeTop(this.text);

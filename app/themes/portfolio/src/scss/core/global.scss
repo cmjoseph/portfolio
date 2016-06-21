@@ -1,9 +1,9 @@
 html, body{
 	@include smooth;
 	font-family: $workeb;
-	overflow-x: hidden;
 	line-height: 1;
-	background-color: black
+	background-color: black;
+	height: 100%;
 }
 
 a{
@@ -21,17 +21,6 @@ a{
 	height: 100%;
 	z-index: 99999;
 	background-color: black;
-	.loader{
-		display: table;
-		margin: 0 auto;
-		height: 100%;
-		position: relative;
-		.gif{
-			display: table-cell;
-			vertical-align: middle;
-			height: 100%;
-		}
-	}
 }
 
 section.home{
@@ -40,4 +29,12 @@ section.home{
 		width: 100%;
 		height: 100%;
 	}
+}
+
+.btn-cta{
+	padding: 10px $pad;
+	background-color: $green;
+	display: inline-block;
+	color: white;
+	margin-top: $pad;
 }

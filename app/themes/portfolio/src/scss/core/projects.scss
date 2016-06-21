@@ -1,7 +1,7 @@
 section.home{
 	.home__projects{
 		@include clearfix;
-		background-color: pink;
+		background-color: black;
 		position: relative;
 		overflow: hidden;
 		.overlay{
@@ -13,14 +13,14 @@ section.home{
 			height: 100%;
 			z-index: 1;
 			background-color: black;
-			transition: opacity $time ease;
+			transition: opacity 1s ease;
 			&.is-open{
 				opacity: 0.8;
 				z-index: 100;
 			}
 		}
 		.grid{
-			width: calc(100% - 270px);
+			width: 100%;
 			float: right;
 			display: flex;
 			flex-wrap: wrap;
@@ -29,8 +29,9 @@ section.home{
 				width: 100%;
 			}
 			.grid__item{
+				cursor: pointer;
 				width: 25%;
-				background-color: pink;
+				background-color: black;
 				position: relative;
 				overflow: hidden;
 				display: inline-table;
@@ -62,20 +63,46 @@ section.home{
 				}
 			}
 		}
-		.grid-panel{
-			position: absolute;
+		.panel{
+			position: fixed;
 			top: 0;
 			right: 0;
-			background-color: white;
 			width: 50%;
-			height: 100%;
-			padding: $pad * 2;
 			z-index: 110;
-			box-shadow: 2px 2px 2px 2px black;
+			padding: $pad * 2;
 			transform: translateX(100%);
 			transition: all $time ease;
 			&.is-open{
 				transform: translateX(0);
+			}
+			&__content{
+				box-shadow: inset 0 0 0 $pad $green;
+				padding: $pad * 2;
+				background-color: white;
+				h2{
+					font-size: 25px;
+				}
+				.image{
+					padding: $pad 0;
+					.screen{
+						position: relative;
+						.window{
+							transition: background-color $time ease;
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							background-color: rgba(53,115,95,0);
+							max-height: 400px;
+							overflow: hidden;
+							&:hover, &:focus{
+								background-color: rgba(53,115,95,0.5);
+							}
+						}
+						img{
+							width: 100%;
+						}
+					}
+				}
 			}
 		}
 	}
