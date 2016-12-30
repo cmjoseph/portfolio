@@ -1,3 +1,17 @@
-body {
-    background-color: white;
+html {
+    -webkit-overflow-scrolling: touch;
+    &.fix{
+    	overflow: hidden;
+    }
+}
+
+#page{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	height: 2000px;
+}
+
+h1,h2,h3,h4,h5,h6,p,span,a,li,label,strong,button,input { 
+	@include smooth; 
 }

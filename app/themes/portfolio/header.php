@@ -33,13 +33,24 @@
 <body <?php body_class(); ?>>
 	<div id="page" class="hfeed site">
 		<header id="masthead" class="site-header" role="banner">
-			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-			</a>
-			<div id="navbar" class="navbar">
-				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-				</nav>
+			<div class="hdr-wrapper">
+				<div id="logo" class="logo">
+					<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<h1 class="site-title">
+							<span class="top">Claude Marc Joseph <br/>Web Developer Extraordinaire</span>
+							<span class="bottom">CMJ WD Extraordinaire</span>
+						</h1>
+					</a>
+				</div>
+				<div id="navbar" class="navbar">
+					<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+						<?php wp_nav_menu( array( 'theme_location' => 'menu-header', 'menu_class' => 'header-menu' ) ); ?>
+					</nav>
+				</div>
+				<div id="social" class="social">
+					<a href="">facebook</a>
+					<a href="">email</a>
+				</div>
 			</div>
 		</header>
 

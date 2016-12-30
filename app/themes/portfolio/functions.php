@@ -64,7 +64,7 @@
 	MENUS
 */
 
-	// register_nav_menu( 'Menu_name',"Menu Location" );    
+	register_nav_menu( 'menu-header',"Menu Header" );   
 
     /**
 	STYLES

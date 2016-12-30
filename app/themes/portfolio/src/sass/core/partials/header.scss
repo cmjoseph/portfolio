@@ -1,0 +1,111 @@
+header{
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	transition: background-color $time ease;
+	overflow: hidden;
+	z-index: 9999;
+	box-shadow: 0 0 4px #333;
+	a{
+		color: white;
+		display: block;
+	}
+	.hdr-wrapper{
+		display: table;
+		width: 100%;
+		border-bottom: 1px solid white;
+	    > div{
+	    	display: table-cell;
+	    	vertical-align: middle;
+    		text-align: center;
+    		font-family: $arr;
+    		&.logo{
+    			font-family: $arb;
+    			width: 20%;
+    			a{
+    				display: inline-block;
+    				font-size: 14px;
+    				width: 100%;
+    				position: relative;
+    			}
+    			h1{
+    				position: absolute;
+    				width: 100%;
+    				top: -20px;
+    				overflow: hidden;
+    				transition: top $time ease;
+    				span{
+    					display: block;
+    					&.top{
+    						padding-bottom: 20px;
+    					}
+    				}
+    			}
+    		}
+    		&.social{
+    			font-family: $arb;
+    			width: 20%;
+    			a{
+    				display: inline-block;
+    				font-size: 14px;
+    			}
+    		}
+	    	&.navbar{
+		    	width: 60%;
+			    ul{
+			    	display: table;
+			    	width: 100%;
+			    	border-left: 1px solid white;
+			    	border-right: 1px solid white;
+		    		li{
+		    			position: relative;
+		    			display: inline-block;
+		    			float: left;
+		    			width: 20%;
+		    			overflow: hidden;
+	    				+ li{
+	    					> a{
+	    						border-left: 1px solid white;
+	    					}
+	    				}
+		    			> a{
+		    				padding: 20px 30px 18px;
+		    				text-transform: uppercase;
+		    				transition: all $time ease;
+		    				&:hover{
+		    					background-color: rgba(255,255,255, 0.4);
+		    					color: black;
+		    				}
+		    			}
+		    		}
+			    }
+	    	}
+	    }
+	}
+	&.small{
+		background-color: white;
+		a{color: black;}
+		.hdr-wrapper{
+			border-bottom: 1px solid black;
+			> div.logo h1{
+				top: -60px;
+			}
+			> div.navbar ul{
+				border-left: 1px solid black;
+		    	border-right: 1px solid black;
+		    	li + li > a{
+					border-left: 1px solid black;
+		    	}
+		    	li > a{
+	    			padding: 15px 30px 12px;
+			    	&:hover{
+						background-color: black;
+						color: white;
+			    	}
+		    	}
+			}
+		}
+	}
+}

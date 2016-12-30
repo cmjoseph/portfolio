@@ -1,4 +1,10 @@
 @import 'utils/reset';
+@import 'utils/fonts';
+@import 'utils/mixins';
+
+@import 'core/variables';
 @import 'core/main';
+
+@import 'core/partials/header';
 
 @import 'core/page/home';

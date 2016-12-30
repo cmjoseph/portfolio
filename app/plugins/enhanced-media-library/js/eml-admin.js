@@ -3,6 +3,12 @@
     var w;
 
 
+    if ( 'settings_page_media' == window.adminpage )
+        window.adminpage = 'options-media-php';
+    if ( 'settings_page_media' == window.pagenow )
+        window.pagenow = 'options-media';
+
+
     if ( $(window).width() < 600 )
         w = '90%';
     else if ( $(window).width() > 1024 )
@@ -15,15 +21,16 @@
 
         var def = $.Deferred(),
 
-            confirmdialog = $('<div id="dialog-modal"></div>').appendTo('body')
+            confirmdialog = $('<div id="eml-dialog-modal"></div>').appendTo('body')
             .html( html )
             .dialog({
-                modal     : true,
-                resizable : false,
-                width     : w,
-                autoOpen  : false,
-                title     : title,
-                buttons   : [
+                dialogClass : 'eml-dialog-modal',
+                modal       : true,
+                resizable   : false,
+                width       : w,
+                autoOpen    : false,
+                title       : title,
+                buttons     : [
                     {
                         'text'  : yes,
                         'class' : yesClass,
@@ -55,15 +62,16 @@
 
         var def = $.Deferred(),
 
-            alertdialog = $('<div id="dialog-modal"></div>').appendTo('body')
+            alertdialog = $('<div id="eml-dialog-modal"></div>').appendTo('body')
             .html( html )
             .dialog({
-                modal     : true,
-                resizable : false,
-                width     : w,
-                autoOpen  : false,
-                title     : title,
-                buttons   : [
+                dialogClass : 'eml-dialog-modal',
+                modal       : true,
+                resizable   : false,
+                width       : w,
+                autoOpen    : false,
+                title       : title,
+                buttons     : [
                     {
                         'text'  : yes,
                         'class' : yesClass,
@@ -89,7 +97,7 @@
     }
 
 
-    window.emlFullscreenSpinnerStop = function( text ) {
+    window.emlFullscreenSpinnerStop = function() {
         $('.fullscreen-spinner-box').remove();
     }
 
