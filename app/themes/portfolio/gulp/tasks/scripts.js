@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import concat from 'gulp-concat';
+import watch from 'gulp-watch';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
@@ -11,102 +12,130 @@ import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 import prettyHrtime from 'pretty-hrtime';
 
-import options from '../options';
-import config from '../config';
-import notifyError from '../utils/error-notifier';
+import notifier from '../utils/notifier';
+import options from '../utils/options';
+import { configCustom, configVendors, babelPresets } from '../config';
 
-let startTime,
-    uglifyOptions = {};
-let pkg = require('../../package.json');
-let banner = ['/* A K F N - <%= pkg.description %> - <%= pkg.year %> */\n console.log("A K F N - <%= pkg.year %>");\n',''].join('\n');
+const vendorsEntries = configVendors.entries;
+const vendorsFilename = configVendors.output.filename;
+const vendorsOutput = configVendors.output.path;
+
+const customEntries = configCustom.entry;
+const customFilename = configCustom.output.filename;
+const customOutput = configCustom.output.path;
 
 gulp.task('scripts', () => {
-    gulp.start('scripts:custom');
-    gulp.start('scripts:libs');
-});
+    // if --watch has been passed as an argument of `gulp build`
+    if ( options.watch ) {
+        gulp.start('vendors::dev'); // build the vendors file at the running time
+        gulp.start('custom::dev'); // build the app file at the running time
 
-gulp.task('scripts:custom', () =>{
-    if( options.watch ){
-        gulp.start('scripts:watchify');    
-    }else {
-        gulp.start('scripts:browserify');
+        // watch files in vendors folders
+        watch(vendorsEntries, () => {
+            gulp.start('vendors::dev'); // start task when a change happens in this folder
+        });
+    } else {
+        gulp.start('vendors::prod'); // build the vendors file ready for production
+        gulp.start('custom::prod'); // build the app file ready for production
     }
 });
 
-gulp.task('scripts:browserify', () => {
-    const bundler = browserify({
-        entries : config.src.custom
-    }).transform(babelify, { 'presets': ['es2015'], "plugins": [    'transform-es2015-block-scoping',
-                                                                    ['transform-es2015-classes', { loose: true }], 
-                                                                    'transform-proto-to-assign',
-                                                                    'transform-runtime' ]});
-
-    bundle(bundler, config.dist.filename);
+gulp.task('vendors::dev', () => {
+    return gulp.src(vendorsEntries) // take all the files in the vendors folders
+        .pipe(concat(vendorsFilename + '.js')) // concatenate them in a single file
+        .pipe(gulp.dest(vendorsOutput)); // output the concatenated file in the specified directory
 });
 
-gulp.task('scripts:watchify', () => {
+gulp.task('vendors::prod', () => {
+    // remove comments that could be in vendors files
+    const uglifyOptions = {
+        preserveComments: false
+    };
+
+    return gulp.src(vendorsEntries) // take all the files in the vendors folders
+        .pipe(concat(vendorsFilename + '.min.js')) // concatenate them in a single file
+        .pipe(uglify(uglifyOptions)) // minify the concatenated file
+        .pipe(gulp.dest(vendorsOutput)); // output the minified file in the specified directory
+});
+
+gulp.task('custom::dev', () => {
+    // create a bundler watching your files 
     const bundler = watchify(browserify({
-        entries : config.src.custom,
-        debug: false,
+        entries: customEntries,
+        debug: true,
         cache: {}, 
         packageCache: {}, 
-        fullPaths: true
-    })).transform(babelify, { 'presets': ['es2015'], "plugins": [    'transform-es2015-block-scoping',
-                                                                    ['transform-es2015-classes', { loose: true }], 
-                                                                    'transform-proto-to-assign',
-                                                                    'transform-runtime' ]});
+        fullPaths: false
+    })).transform(babelify, babelPresets);
 
-    bundle(bundler, config.dist.filename);
+    bundleDev(bundler, customFilename); // build the app file at the running time
 
+    // watch updates in the bundle
     bundler.on('update', () => {
+        // simple logs
         util.log(util.colors.yellow('Bundle has changed.'));
-
         util.log('Running', '\'' + util.colors.cyan('bundling') + '\'...');
 
-        bundle(bundler, config.dist.filename);
+        bundleDev(bundler, customFilename); // rebundle the whole thing
     });
 });
 
+gulp.task('custom::prod', () => {
+    // create a simple bundler without the watching properties
+    const bundler = browserify({
+        entries: customEntries
+    }).transform(babelify, babelPresets);
 
-gulp.task('scripts:libs', () =>{
-    return gulp.src( [config.src.path + '/js/libs/jquery.min.js', config.src.libs] )
-       .pipe(concat('vendors.js'))
-       .pipe(gulp.dest(config.dist.vendors));
+    bundleProd(bundler, customFilename);
 });
 
+const bundleDev = ( bundler, filename ) => {
+    const startTime = process.hrtime(); // track when the task has started
 
-const bundle = (bundler, filename) => {
-    startTime = process.hrtime();
-
-    if(options.production) {
-        uglifyOptions = {
-            compress : {
-                drop_console : true
-            },
-            screwIE8: true,
-            preserveComments : false
-        }
-    }else {
-        uglifyOptions = {
-            compress : {
-                drop_console : false
-            },
-            screwIE8: true,
-            preserveComments : true
-        }
-    }
+    // uglify but keep logs to console and comments
+    const uglifyOptions = {
+        compress: {
+            drop_console: false
+        },
+        screwIE8: true,
+        preserveComments: true
+    }; 
 
     return bundler.bundle()
-        .on('error', notifyError)
+        .on('error', notifier) // send a notification to the os in case something fails
         .on('end', () => {
+            // simple logs
             util.log('Finished', '\'' + util.colors.cyan('bundling') + '\'', 'after', util.colors.magenta(prettyHrtime(process.hrtime(startTime))));
         })
         .pipe(source(filename + '.js'))
         .pipe(buffer())
-        //.pipe(options.debug ? sourcemaps.init({ loadMaps: true }) : util.noop())
+        .pipe(sourcemaps.init({ loadMaps: true })) // init sourcemaps
+        .pipe(uglify(uglifyOptions)) // uglify the bundle
+        .pipe(sourcemaps.write()) // write sourcemaps
+        .pipe(gulp.dest(customOutput)); // output the bundle in the specified directory
+};
+
+const bundleProd = ( bundler, filename ) => {
+    const startTime = process.hrtime(); // track when the task has started
+    const banner = ['/* A K F N - 2016 */\n console.log("A K F N - 2016");\n',''].join('\n'); // prepare banner for the final file
+
+    // uglify and remove comments and logs to console
+    const uglifyOptions = {
+        compress: {
+            drop_console: true
+        },
+        screwIE8: true,
+        preserveComments: false
+    };
+
+    return bundler.bundle()
+        .on('error', notifier)
+        .on('end', () => {
+            util.log('Finished', '\'' + util.colors.cyan('bundling') + '\'', 'after', util.colors.magenta(prettyHrtime(process.hrtime(startTime))));
+        })
+        .pipe(source(filename + '.min.js')) // rename the file with a .min suffix
+        .pipe(buffer())
         .pipe(uglify(uglifyOptions))
-        .pipe(options.production ? header(banner, { pkg : pkg }) : util.noop())
-        //.pipe(options.debug ? sourcemaps.write('./') : util.noop())
-        //.pipe(options.debug ? sourcemaps.write() : util.noop())
-        .pipe(gulp.dest(config.dist.custom))
+        .pipe(header(banner, {})) // add the banner
+        .pipe(gulp.dest(customOutput)); // output the bundle in the specified directory
 };

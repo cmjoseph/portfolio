@@ -12,7 +12,9 @@
 
 		</div><!-- #main -->
 		<footer id="colophon" class="site-footer" role="contentinfo">
-			
+			<div class="site-info">
+				footer
+			</div>
 		</footer>
 	</div>
 

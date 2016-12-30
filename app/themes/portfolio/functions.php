@@ -57,18 +57,28 @@
 	IMAGE SIZE
 */
 
-	add_image_size("fullscreen", 1920, 955, true);
+	add_image_size("fullscreen", 1920, 950, true);
+
 	
 /**
 	MENUS
 */
 
-	register_nav_menu( 'menu-header', "Header_Menu" );
-	register_nav_menu( 'menu-footer', "Footer_Menu" ); 
+	// register_nav_menu( 'Menu_name',"Menu Location" );    
 
     /**
 	STYLES
 */
+	function optimize_jquery() {
+		if (!is_admin()) {
+			wp_deregister_script('jquery');
+			wp_deregister_script('jquery-migrate.min');
+			wp_deregister_script('comment-reply.min');
+			wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, '3.6', false);
+			wp_enqueue_script('jquery');
+		}
+	}
+	add_action('template_redirect', 'optimize_jquery');
 
 	function load_site_styles(){
 		wp_enqueue_style(
@@ -81,61 +91,41 @@
 	}
 	add_action('wp_enqueue_scripts', 'load_site_styles', 100);
 
-
-/**
-	SCRIPT
-*/
-
 	function load_site_scripts() {
-		global $is_winIE;
-
-        wp_enqueue_script(
-            'global-js',
-            get_template_directory_uri().'/js/build.js',
-            array("jquery"),
-            false,
-            true
-        );
-        
-		wp_enqueue_script(
-            'lib-js',
-            get_template_directory_uri().'/js/vendors/vendors.js',
-           	null,
-            null,
-            true
-        );
+	global $is_winIE;
+		// JS Librairies Compile
+	    wp_enqueue_script(
+	        'lib-js',
+	        get_template_directory_uri().'/js/vendors/vendors.js',
+	       	null,
+	        null,
+	        true
+	    );
+	    wp_enqueue_script(
+	        'global-js',
+	        get_template_directory_uri().'/js/build.js',
+	        array("jquery"),
+	        false,
+	        true
+	    );
+	    
 	}
 	add_action('wp_enqueue_scripts', 'load_site_scripts');
 
-
-	function optimize_jquery() {
-		if (!is_admin()) {
-			wp_deregister_script('jquery');
-			wp_deregister_script('jquery-migrate.min');
-			wp_deregister_script('comment-reply.min');
-			$protocol = 'http:';
-			
-			wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', false, '3.6', true);
-			wp_enqueue_script('jquery');
-		}
-	}	
-	add_action('template_redirect', 'optimize_jquery');
-
-
 	add_filter('pre_get_posts', 'query_post_type');
 	function query_post_type($query) {
-	  if(is_category() || is_tag()) {
-	    $post_type = get_query_var('post_type');
-		if($post_type)
-		    $post_type = $post_type;
-		else
-		    $post_type = array('nav_menu_item', 'post','news', 'team', 'eckotv'); // replace cpt to your custom post type
-	    	$query->set('post_type',$post_type);
+	  	if(is_category() || is_tag()) {
+		    $post_type = get_query_var('post_type');
+			if($post_type)
+			    $post_type = $post_type;
+			else
+			    $post_type = array('nav_menu_item','projects'); // replace cpt to your custom post type
+		    $query->set('post_type',$post_type);
 			return $query;
 	    }
 	}
 
-	// Remove Comment Post
+// Remove Comment Post
 	function my_remove_menu_pages() {
 		remove_menu_page('edit.php');
 		remove_menu_page('edit-comments.php');
@@ -546,4 +536,4 @@ add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
 /**
 	Custom functions
 */
-include("functions-customs.php");
+include("akufen_customFunctions.php");

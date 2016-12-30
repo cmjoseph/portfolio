@@ -1,5 +1,5 @@
 const srcDir = './src';
-const distDir = '.';
+const distDir = './public';
 
 const config = {
     styles: {
