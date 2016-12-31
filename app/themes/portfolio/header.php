@@ -37,8 +37,8 @@
 				<div id="logo" class="logo">
 					<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 						<h1 class="site-title">
-							<span class="top">Claude Marc Joseph <br/>Web Developer Extraordinaire</span>
-							<span class="bottom">CMJ WD Extraordinaire</span>
+							<span class="top">Claude Marc Joseph</span>
+							<span class="bottom">Web Developer Extraordinaire</span>
 						</h1>
 					</a>
 				</div>
@@ -48,8 +48,8 @@
 					</nav>
 				</div>
 				<div id="social" class="social">
-					<a href="">facebook</a>
-					<a href="">email</a>
+					<a href=""><span class="icon-facebook"></span></a>
+					<a href=""><span class="icon-envelop"></span></a>
 				</div>
 			</div>
 		</header>
