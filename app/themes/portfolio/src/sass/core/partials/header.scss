@@ -70,13 +70,14 @@ header{
 		    			float: left;
 		    			width: 20%;
 		    			overflow: hidden;
+		    			transition: all $time ease;
 	    				+ li{
 	    					> a{
 	    						border-left: 1px solid white;
 	    					}
 	    				}
 	    				&.active{
-	    					background-color: rgba(255,255,255, 0.2);
+	    					background-color: rgba(64,224,208, 0.6);
 	    					color: white;
 	    				}
 		    			> a{
@@ -84,7 +85,7 @@ header{
 		    				text-transform: uppercase;
 		    				transition: all $time ease;
 		    				&:hover{
-		    					background-color: rgba(255,255,255, 0.2);
+		    					background-color: rgba(64,224,208, 0.4);
 		    					color: white;
 		    				}
 		    			}
@@ -99,7 +100,7 @@ header{
 		.hdr-wrapper{
 			border-bottom: 1px solid black;
 			> div.logo h1{
-				top: -48px;
+				top: -49px;
 				font-size: 16px;
 			}
 			> div.navbar ul{
@@ -115,9 +116,11 @@ header{
 						color: white;
 			    	}
 		    	}
-		    	li.active > a{
+		    	li.active{
 		    		background-color: black;
-					color: white;
+		    		> a{
+						color: white;
+		    		}
 		    	}
 			}
 		}
