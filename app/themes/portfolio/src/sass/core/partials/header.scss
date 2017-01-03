@@ -73,7 +73,7 @@ header{
 		    			transition: all $time ease;
 	    				+ li{
 	    					> a{
-	    						border-left: 1px solid white;
+	    						// border-left: 1px solid white;
 	    					}
 	    				}
 	    				&.active{
@@ -107,7 +107,7 @@ header{
 				border-left: 1px solid black;
 		    	border-right: 1px solid black;
 		    	li + li > a{
-					border-left: 1px solid black;
+					// border-left: 1px solid black;
 		    	}
 		    	li > a{
 	    			padding: 15px 30px 12px;

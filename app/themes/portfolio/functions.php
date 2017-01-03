@@ -125,7 +125,13 @@
 	    }
 	}
 
-// Remove Comment Post
+	function cc_mime_types($mimes) {
+	  $mimes['svg'] = 'image/svg+xml';
+	  return $mimes;
+	}
+	add_filter('upload_mimes', 'cc_mime_types');
+
+	// Remove Comment Post
 	function my_remove_menu_pages() {
 		remove_menu_page('edit.php');
 		remove_menu_page('edit-comments.php');

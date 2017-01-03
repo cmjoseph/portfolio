@@ -25,7 +25,7 @@ class Header {
 
     anchorJump(event){
     	event.preventDefault();
-    	$('html, body').animate({ scrollTop: $(event.target.hash).offset().top}, 500);
+    	$('html, body').animate({ scrollTop: $(event.target.hash).offset().top - 44}, 500);
     }
 
     activeOnScroll(){
@@ -35,7 +35,7 @@ class Header {
             let id = sections[i].getAttribute('id');
             let sect = document.getElementById(id);
             if (sect != null) {
-                let sectpos = $(sect).position().top - 168;
+                let sectpos = $(sect).position().top - 100;
                 if (sectpos <= pos) {
                     $('#navbar ul li.active').removeClass('active');
                     $('#navbar ul li.'+id+'').addClass('active');
