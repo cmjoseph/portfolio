@@ -91,14 +91,26 @@ $projects = get_posts($args);
 		</div>
 	</div>
 	<?php endif ?>
-	<div id="about" class="section" style="background-image:url('')">
+	<div id="about" class="section">
 		<h3 class="title">About me</h3>
 		<div class="about-content">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo blanditiis odio nostrum totam, dignissimos ipsa, adipisci recusandae unde sapiente similique voluptates aliquam error distinctio accusamus culpa ipsum laboriosam laborum reprehenderit, natus temporibus facilis sint. Nulla cupiditate culpa possimus facere vitae?</p>
+			<div class="front">
+				<div class="content">
+					<h4>Doing my job...one day at a time</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo blanditiis odio nostrum totam, dignissimos ipsa, adipisci recusandae unde sapiente similique voluptates aliquam error distinctio accusamus culpa ipsum laboriosam laborum reprehenderit, natus temporibus facilis sint. Nulla cupiditate culpa possimus facere vitae?</p>
+				</div>
+			</div>
+			<div class="back">
+				<div class="overlay"></div>
+				<video autoplay loop>
+					<source src="<?php echo get_template_directory_uri(); ?>/video/video.mp4" type="video/mp4">
+				</video>
+			</div>
 		</div>
 	</div>
 	<div id="contact" class="section">
 		<h3 class="title">Contact</h3>
+		<?php echo do_shortcode("[contact-form-7 id='112' title='Contact form 1']"); ?>
 	</div>
 </section>
 
