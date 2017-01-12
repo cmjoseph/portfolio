@@ -10,6 +10,9 @@ header{
 	box-shadow: 0 0 4px #333;
 	transform: translateZ(0);
 	backface-visibility: hidden;
+	.single &{
+		background-color: rgba(0,0,0,0.8);
+	}
 	a{
 		color: white;
 		display: block;

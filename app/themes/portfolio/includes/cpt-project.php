@@ -1,4 +1,4 @@
-<?php function register_cpt_projects() {
+<?php function register_cpt_project() {
 
    /**
     * Register a custom post type
@@ -8,7 +8,7 @@
     * @see add_post_type_support for full descriptions of 'supports' options
     * @see get_post_type_capabilities for full list of available fine grained capabilities that are supported
     */
-    register_post_type( 'Projects', array(
+    register_post_type( 'project', array(
         'public' => true,
         'publicly_queryable' => true,
         'show_ui' => true,
@@ -40,5 +40,5 @@
         )
     ) );
 }
-add_action( 'init', 'register_cpt_projects' );
+add_action( 'init', 'register_cpt_project' );
 ?>

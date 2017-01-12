@@ -1,6 +1,6 @@
 <?php 
 	function loadCpt(){
-		require_once("cpt-projects.php");	
+		require_once("cpt-project.php");	
 	}
 	loadCpt();
 ?>

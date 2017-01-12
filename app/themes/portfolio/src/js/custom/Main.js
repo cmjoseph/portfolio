@@ -3,6 +3,7 @@ import Header from '../partials/Header';
 import Footer from '../partials/Footer';
 
 import Home from './Home';
+import Single from './Single';
 
 class Main {
 
@@ -28,6 +29,8 @@ class Main {
         
         switch($('body section').attr("data-template")){
             case "home": this.page = new Home();
+            break;
+            case "single": this.page = new Single();
             break;
         }
     }

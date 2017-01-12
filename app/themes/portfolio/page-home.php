@@ -11,7 +11,7 @@ $slides = $field['slider'];
 $skills = $field['skills'];
 
 $args = array(
-    'post_type'         => 'projects',
+    'post_type'         => 'project',
     'post_status'       => 'publish',
     'orderby' 			=> 'menu_order', 
     'posts_per_page'    => -1,
