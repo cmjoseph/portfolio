@@ -21,9 +21,11 @@ class Main {
         if(DeviceInfo.isFirefox) document.body.classList.add("firefox");
         if(DeviceInfo.isSafari) document.body.classList.add("safari");
         if(DeviceInfo.isChrome) document.body.classList.add("chrome");
+
         // let preloader = document.getElementById('preloader');
         // TweenLite.to(preloader, 0.5,{css:{autoAlpha:0},delay:0.4});
         // TweenLite.set(preloader,{css:{display:"block"},delay:0.8});
+        
         this.header = new Header();
         this.footer = new Footer();
         

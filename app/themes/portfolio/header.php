@@ -48,10 +48,14 @@
 					</nav>
 				</div>
 				<div id="social" class="social">
-					<a href=""><span class="icon-facebook"></span></a>
-					<a href=""><span class="icon-envelop"></span></a>
+					<div class="wrapper">
+						<a class="fbk" href=""><span class="icon-facebook"></span></a>
+						<a class="mail" href=""><span class="icon-envelop"></span></a>
+						<a class="phone" href="tel:514-616-5209">514-616-5209</a>
+					</div>
 				</div>
 			</div>
+			<div id="hamburger"></div>
 		</header>
 
 		<div id="main" class="site-main">

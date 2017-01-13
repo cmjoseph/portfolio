@@ -2,8 +2,11 @@ class Single {
 
     constructor () {
         console.log('Single');
+        this.panel = document.getElementById("panel");
         this.controller = new ScrollMagic.Controller();
-        // this.animation();
+        this.animationsingle = this.animationsingle.bind(this);
+        this.animationsingle();
+        this.slider = this.slider.bind(this);
         this.slider();
     }
 
@@ -19,33 +22,17 @@ class Single {
         });
     }
 
-    animation(){
-        this.homearea    	= new TimelineMax();
-        this.projectarea    = new TimelineMax();
-        this.skillarea    	= new TimelineMax();
+    animationsingle(){
+        this.panelarea = new TimelineMax();
+        this.panel = document.querySelector("#panel");
+        this.elements = document.querySelectorAll("#panel .elem");
+        this.panelarea.fromTo(this.panel, 1, { opacity: 0, x:40 }, { opacity: 1, x:0}, {ease:'Cubic.easeOut'});
+        this.panelarea.staggerFromTo(this.elements, 0.5, { opacity: 0, y:-40 }, { opacity: 1, y:0}, 0.2);
 
-        this.hometitle 		= document.querySelector(".home-content h2");
-        this.projectitem 	= document.querySelectorAll(".grid-item");
-        this.skillitem 		= document.querySelectorAll(".skill-item");
-        
-        this.homearea.fromTo(this.hometitle, 1, { opacity: 0, y:-40 }, { opacity: 1, y:0 }, 0.4);
-        this.projectarea.staggerFromTo(this.projectitem, 0.2, { scale: 0, y:20}, { scale: 1, y:0 }, 0.2);
-        this.skillarea.staggerFromTo(this.skillitem, 0.2, { opacity: 0, x:-20}, { opacity: 1, x:0 }, 0.2);
-       
-        let main = new ScrollMagic.Scene({triggerElement: '#home', reverse: false,})
-        .setTween(this.homearea)
-        .addTo(this.controller);
-
-        let project = new ScrollMagic.Scene({triggerElement: '#projects', reverse: false,})
-        .setTween(this.projectarea)
-        .addTo(this.controller);
-
-        let skill = new ScrollMagic.Scene({triggerElement: '#projects', reverse: false,})
-        .setTween(this.skillarea)
+        let single = new ScrollMagic.Scene({triggerElement: '#main', reverse: false,})
+        .setTween(this.panelarea)
         .addTo(this.controller);
     }
-
-
 }
 
 export default Single;

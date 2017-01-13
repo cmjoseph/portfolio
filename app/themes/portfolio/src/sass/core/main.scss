@@ -15,3 +15,86 @@ html {
 h1,h2,h3,h4,h5,h6,p,span,a,li,label,strong,button,input { 
 	@include smooth; 
 }
+
+.wysiwyg{
+    h2{
+        text-transform:uppercase;
+        font-size:20px;
+        color: black;
+        font-family: $arx;
+        letter-spacing: 1px;
+    }
+    h3{
+        color: black; 
+        font-size: 14px;
+        font-family: $arx;
+        letter-spacing: 1px;
+    }
+    p + h2{
+        padding-top: 40px;
+        @media #{$mobile}{
+            padding-top: 30px;
+        }
+    }
+    
+    h3,h2{
+        padding: 20px 0;
+    }
+    p + p, p + ul, p + ol, ol + ol, ul + ul, ol + ul{
+        margin-top: 30px;
+        display:block;
+    }
+    ol li{
+         counter-increment: step-counter;
+    }
+    ol, ul{
+        list-style-type: none;
+    }
+    ol li::before{
+        content: counter(step-counter, decimal-leading-zero)'.';
+        margin-right: -2px;
+        font-size: 100%;
+        color:  turquoise;
+        font-weight: bold;
+        padding: 3px 8px;
+    }
+    ul li::before{
+        content: '\2014';
+        margin-right: 5px;
+        font-size: 100%;
+        color:  turquoise;
+        font-weight: bold;
+        padding: 3px 8px;
+    }
+    p, td, tr{
+        font-size:14px;
+        font-family: $arr;
+        line-height:1.7em;
+        color: black;
+        a{
+            display: inline-block;
+            word-break: break-all;
+            color: turquoise;
+            transition: all $time ease-in-out;
+            &:hover{ opacity: 0.5; }
+        }
+    }
+    ul, ol{
+        font-size:14px;
+        font-family: $arr;
+        color: black;
+        li {
+            line-height: 20px;
+            padding-left: 35px;
+            text-indent: -35px;
+            a{
+                color: turquoise;
+                transition: all $time ease-in-out;
+                &:hover{ opacity: 0.5; }
+            }
+            + li{
+                padding-top: 15px;
+            }
+        }
+    }
+}

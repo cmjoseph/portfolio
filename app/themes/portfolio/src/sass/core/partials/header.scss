@@ -52,12 +52,31 @@ header{
     		&.social{
     			font-family: $arb;
     			width: 20%;
-    			a{
-    				display: inline-block;
-    				font-size: 24px;
-    				+ a{
-    					padding-left: 20px;
-    				}
+    			.wrapper{
+    				display: table;
+    				margin: 0 auto;
+	    			a{
+	    				display: table-cell;
+	    				vertical-align: middle;
+	    				font-size: 24px;
+	    				&.fbk{
+	    					font-size: 18px;
+	    				}
+	    				&.mail{
+	    					font-size: 25px;
+	    				}
+	    				&.phone{
+	    					font-size: 17px;
+	    					white-space: nowrap;
+	    				}
+	    				+ a{
+	    					padding-left: 20px;
+	    				}
+	    				transition: opacity $time ease;
+	    				&:hover{
+	    					opacity: 0.5;
+	    				}
+	    			}
     			}
     		}
 	    	&.navbar{
@@ -98,7 +117,7 @@ header{
 	    }
 	}
 	&.small{
-		background-color: rgba(255,255,255, 0.8);
+		background-color: rgba(255,255,255, 0.9);
 		a{color: black;}
 		.hdr-wrapper{
 			border-bottom: 1px solid black;

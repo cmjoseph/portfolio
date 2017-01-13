@@ -40,11 +40,11 @@
 
 @font-face {
     font-family: 'icomoon';
-    src:  url('fonts/icomoon/icomoon.eot?ft0vyq');
-    src:  url('fonts/icomoon/icomoon.eot?ft0vyq#iefix') format('embedded-opentype'),
-        url('fonts/icomoon/icomoon.ttf?ft0vyq') format('truetype'),
-        url('fonts/icomoon/icomoon.woff?ft0vyq') format('woff'),
-        url('fonts/icomoon/icomoon.svg?ft0vyq#icomoon') format('svg');
+    src:  url('fonts/icomoon/icomoon.eot?49zfqm');
+    src:  url('fonts/icomoon/icomoon.eot?49zfqm#iefix') format('embedded-opentype'),
+        url('fonts/icomoon/icomoon.ttf?49zfqm') format('truetype'),
+        url('fonts/icomoon/icomoon.woff?49zfqm') format('woff'),
+        url('fonts/icomoon/icomoon.svg?49zfqm#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -64,10 +64,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-envelop:before {
-  content: "\e945";
-}
 .icon-facebook:before {
-  content: "\ea91";
+  content: "\e900";
+}
+.icon-envelop:before {
+  content: "\e901";
+}
+.icon-cross:before {
+  content: "\ea0f";
 }
 
