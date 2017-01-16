@@ -3,7 +3,7 @@ header{
 	width: 100%;
 	top: 0;
 	left: 0;
-	background-color: transparent;
+	background-color: black;
 	transition: background-color $time ease;
 	overflow: hidden;
 	z-index: 9999;
@@ -33,13 +33,15 @@ header{
     				display: inline-block;
     				font-size: 18px;
     				width: 100%;
+    				height: 100%;
     				position: relative;
     			}
     			h1{
     				position: absolute;
     				width: 100%;
-    				top: -13px;
+    				top: 0;
     				overflow: hidden;
+    				padding: 20px 0;
     				transition: top $time ease;
     				span{
     					display: block;
@@ -122,7 +124,7 @@ header{
 		.hdr-wrapper{
 			border-bottom: 1px solid black;
 			> div.logo h1{
-				top: -49px;
+				top: -40px;
 				font-size: 16px;
 			}
 			> div.navbar ul{

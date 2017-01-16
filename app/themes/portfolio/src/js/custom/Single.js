@@ -26,7 +26,7 @@ class Single {
         this.panelarea = new TimelineMax();
         this.panel = document.querySelector("#panel");
         this.elements = document.querySelectorAll("#panel .elem");
-        this.panelarea.fromTo(this.panel, 1, { opacity: 0, x:40 }, { opacity: 1, x:0}, {ease:'Cubic.easeOut'});
+        this.panelarea.fromTo(this.panel, 1, { left: -100% }, { left:100% }, {ease:'Cubic.easeOut'});
         this.panelarea.staggerFromTo(this.elements, 0.5, { opacity: 0, y:-40 }, { opacity: 1, y:0}, 0.2);
 
         let single = new ScrollMagic.Scene({triggerElement: '#main', reverse: false,})

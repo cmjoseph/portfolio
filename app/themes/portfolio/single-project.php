@@ -32,7 +32,9 @@ while ( have_posts() ) : the_post();
 				<div id="panel" class="panel">
 					<div class="content">
 						<div class="top elem">
-							<a target="_blank" href="<?php echo $field['website_url']; ?>"><img class="logo" src="<?php echo $field['website_logo']['url']; ?>" alt="<?php echo the_title(); ?>"></a>
+							<div class="circle" style="background-color:<?php echo $field['website_color'] ?>">
+								<a target="_blank" href="<?php echo $field['website_url']; ?>"><img class="logo" src="<?php echo $field['website_logo']['url']; ?>" alt="<?php echo the_title(); ?>"></a>
+							</div>
 							<h2><?php echo the_title(); ?></h2>
 						</div>
 						<div class="mid elem wysiwyg">

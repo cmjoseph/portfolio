@@ -109,7 +109,7 @@ $projects = get_posts($args);
 		</div>
 	</div>
 	<div id="contact" class="section">
-		<h3 class="title">Contact</h3>
+		<h3 class="title">For a submission</h3>
 		<?php echo do_shortcode("[contact-form-7 id='112' title='Contact form 1']"); ?>
 	</div>
 </section>
